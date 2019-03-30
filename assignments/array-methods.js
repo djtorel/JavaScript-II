@@ -514,3 +514,4 @@ console.log(nameAndCompany);
 // Problem 3 - Return a list of people who  donated more than 250
 const highRollers = runners.filter(({ donation }) => donation >= 250);
 console.log(highRollers);
+// mvp complete
