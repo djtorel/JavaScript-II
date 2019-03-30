@@ -463,12 +463,15 @@ const runners = [
 // and last names of each runner for their running bibs.  Combine both the first
 // and last names into a new array called fullName.
 let fullName = [];
+runners.forEach(({ first_name, last_name }) =>
+  fullName.push(`${first_name} ${last_name}`)
+);
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ==== The event director needs to have all the
 // runner's first names converted to uppercase because the director BECAME DRUNK
 // WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
+let allCaps = runners.map(({ first_name }) => first_name.toUpperCase());
 console.log(allCaps);
 
 // ==== Challenge 3: Use .filter() ==== The large shirts won't be available for
@@ -476,7 +479,7 @@ console.log(allCaps);
 // shirts so they can choose a different size. Return an array named largeShirts
 // that contains information about the runners that have a shirt size of L and
 // log the result
-let largeShirts = [];
+let largeShirts = runners.filter(({ shirt_size }) => shirt_size === 'L');
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ==== The donations need to be tallied up and
@@ -491,8 +494,17 @@ console.log(ticketPriceTotal);
 // then solve 3 unique problems using one or many of the array methods listed
 // above.
 
-// Problem 1
+// Problem 1 - Collect emails
+const emails = runners.map(({ email }) => email);
+console.log(emails);
 
-// Problem 2
+// Problem 2 - Sum of donations
+const totalDonations = runners.reduce(
+  (total, { donation }) => total + donation,
+  0
+);
+console.log(totalDonations);
 
-// Problem 3
+// Problem 3 - Return a list of people who  donated more than 250
+const highRollers = runners.filter(({ donation }) => donation >= 250);
+console.log(highRollers);
